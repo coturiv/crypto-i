@@ -27,6 +27,7 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+        {/* https://github.com/gitname/react-gh-pages/issues/3#issuecomment-531449162 */}
         {/* <Route path="/home" component={Home} exact={true} /> */}
         <Route exact path={window.location.pathname || '/'} component={Home} />
       </IonRouterOutlet>

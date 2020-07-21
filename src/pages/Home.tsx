@@ -7,14 +7,18 @@ import * as CryptoJS from 'crypto-js';
 import './Home.css';
 
 
-const iv = CryptoJS.enc.Hex.parse("101112131415161718191a1b1c1d1e1f");
+const iv = CryptoJS.enc.Base64.parse("101112131415161718191a1b1c1d1e1f");
 
 const encrypt = (message = '', key = '') => {
-  return CryptoJS.AES.encrypt(message, key, {iv}).toString();
+  const encrypted = CryptoJS.AES.encrypt(message, key, {iv}).toString();
+
+  return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(encrypted));
 }
 
 const decrypt = (message = '', key = '') => {
-  return CryptoJS.AES.decrypt(message, key, {iv}).toString(CryptoJS.enc.Utf8);
+  const decrypted = CryptoJS.enc.Base64.parse(message).toString(CryptoJS.enc.Utf8);
+
+  return CryptoJS.AES.decrypt(decrypted, key, {iv}).toString(CryptoJS.enc.Utf8)
 }
 
 
@@ -28,7 +32,11 @@ const Home: React.FC = () => {
       return;
     }
 
-    setOutput(encrypt(message, secretPassphrase));
+    try {
+      setOutput(encrypt(message, secretPassphrase));
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   const decryptText = () => {
@@ -36,10 +44,14 @@ const Home: React.FC = () => {
       return;
     }
 
-    setOutput(decrypt(message, secretPassphrase));
+    try {
+      setOutput(decrypt(message, secretPassphrase));
+    } catch(e) {
+      console.log(e);
+    }
   }
 
-  const copyToClipboard = (e: any) => {
+  const copyToClipboard = (_: any) => {
     navigator.clipboard.writeText(outputText || '');
   }
 
