@@ -48,6 +48,8 @@ const Home: React.FC = () => {
       setOutput(decrypt(message, secretPassphrase));
     } catch(e) {
       console.log(e);
+
+      setOutput('');
     }
   }
 
