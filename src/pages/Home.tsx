@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { IonContent, IonPage, IonTextarea, IonItem, IonLabel, IonList, IonListHeader, IonInput, IonButton, IonIcon } from '@ionic/react';
+import { IonContent, IonPage, IonTextarea, IonItem, IonLabel, IonList, IonListHeader, IonButton, IonIcon } from '@ionic/react';
 import { copy } from 'ionicons/icons';
 
 import * as CryptoJS from 'crypto-js';
 
 import './Home.css';
+
+import ShowHidePassword from '../components/ShowHidePassword';
 
 
 const iv = CryptoJS.enc.Base64.parse("101112131415161718191a1b1c1d1e1f");
@@ -73,14 +75,17 @@ const Home: React.FC = () => {
             </IonLabel>
           </IonListHeader>
 
+          {/* Plain/or encrypted text */}
           <IonItem style={{marginTop: '24px'}}>
             <IonTextarea placeholder="Plain or encrypted text here" rows={6} value={message} onIonChange={e => setMessage(e.detail.value!)}></IonTextarea>
           </IonItem>
      
+          {/* Key of the encryption */}
           <IonItem style={{marginTop: '24px'}}>
-            <IonInput value={secretPassphrase} placeholder="Key of the encryption" onIonChange={e => setSecret(e.detail.value!)} clearInput></IonInput>  
+            <ShowHidePassword onChange={(e: any) => setSecret(e)}></ShowHidePassword>
           </IonItem>
 
+          {/* [encrypt/decript] buttons */}
           <IonItem lines="none">
             <div style={{width: '100%', marginTop: '24px'}} className="ion-text-end">
               <IonButton color="tertiary" onClick={encryptText}>Encrypt</IonButton>
@@ -88,6 +93,7 @@ const Home: React.FC = () => {
             </div>
           </IonItem>
 
+          {/* Output */}
           {outputText && outputText!.length > 0 &&
             <IonItem style={{marginTop: '64px'}}>
               <IonTextarea style={{overflow: 'hidden'}} autoGrow={true} readonly={true} value={outputText}></IonTextarea>
