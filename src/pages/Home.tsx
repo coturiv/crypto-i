@@ -82,7 +82,7 @@ const Home: React.FC = () => {
      
           {/* Key of the encryption */}
           <IonItem style={{marginTop: '24px'}}>
-            <ShowHidePassword onChange={(e: any) => setSecret(e)}></ShowHidePassword>
+            <ShowHidePassword onChange={(e: any) => setSecret(e.detail.value!)}></ShowHidePassword>
           </IonItem>
 
           {/* [encrypt/decript] buttons */}

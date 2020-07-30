@@ -24,8 +24,8 @@ const ShowHidePassword: React.FC = (props: Props) => {
     <React.Fragment>
       <IonInput placeholder="Key of the encryption" type={encrypted ? 'password' : 'text'} onIonChange={e => props.onChange(e)}/>
     
-      <IonButton onClick={() => changeMode(!encrypted)}>
-        <IonIcon slot='icon-only' icon={encrypted ? eye : eyeOff} />
+      <IonButton onClick={() => changeMode(!encrypted)} fill='clear'>
+        <IonIcon slot='icon-only' icon={encrypted ? eye : eyeOff} color='secondary' style={{fontSize: '2.2em'}} />
       </IonButton>
     </React.Fragment>
     
