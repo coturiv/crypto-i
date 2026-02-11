@@ -1,20 +1,109 @@
-.item {
-    --padding-start: 8px !important;
-    --padding-end: 0 !important;
-    --inner-padding-end: 0 !important;
-    --highlight-color-focused: none !important;
-    --border-width: 1px 1px 1px 1px !important;
+.home-content {
+  --background: var(--ion-background-color);
 }
 
-.item.item-lines-none {
-    --border-width: 0 !important;
+.home-content::part(scroll) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
-ion-textarea {
-    --padding-top: 0 !important;
+.main-container {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
 }
 
-ion-textarea, ion-input {
-    font-size: 13px;
-    --color: #444 !important;
+.main-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--ion-color-light-shade);
+  margin-bottom: 24px;
+  background: var(--ion-card-background, var(--ion-item-background, var(--ion-background-color)));
 }
+
+.result-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--ion-color-light-shade);
+  background: var(--ion-item-background, var(--ion-background-color));
+}
+
+.input-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --background: transparent;
+  margin-bottom: 20px;
+  border: 1.5px solid #ddd; /* Brighter border for light mode */
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  --min-height: auto;
+}
+
+body.dark .input-item {
+  border-color: #444; /* More visible border in dark mode */
+}
+
+.input-item:focus-within {
+  border-color: var(--ion-color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--ion-color-primary-rgb), 0.1);
+}
+
+.custom-textarea {
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 120px;
+  margin: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.action-button {
+  --border-radius: 8px;
+  height: 40px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.2px;
+  min-width: 140px;
+  font-size: 16px;
+}
+
+.result-container {
+  background: var(--ion-color-step-100);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0;
+}
+
+.result-textarea {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ion-text-color);
+  font-family: inherit;
+  margin: 0;
+  --background: transparent;
+}
+
+.copy-button {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  margin-top: 4px;
+}
+
+body.dark .main-card, body.dark .result-container {
+  background: var(--ion-color-step-50);
+}
+
+

@@ -1,0 +1,31 @@
+.theme-toggle {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  margin: 0;
+  font-size: 22px;
+  color: #333; /* Darker icon in light mode */
+  border: 1.5px solid #ccc; /* More visible border in light mode */
+  border-radius: 10px;
+  height: 42px;
+  width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  background: transparent;
+}
+
+body.dark .theme-toggle {
+  color: #ffffff; /* Pure white icon in dark mode for maximum visibility */
+  border-color: #444; /* Subtle but visible border in dark mode */
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: #999;
+}
+
+body.dark .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #666;
+}
