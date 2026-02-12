@@ -27,3 +27,35 @@
 body.dark .copyright-container {
   color: var(--ion-color-step-500);
 }
+
+.social-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-links a {
+  color: var(--ion-color-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+.social-icon {
+  font-size: 18px;
+  margin: 0;
+}
+
+.updated-row {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
